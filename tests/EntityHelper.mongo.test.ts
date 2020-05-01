@@ -20,6 +20,7 @@ describe('EntityAssignerMongo', () => {
     author.born = new Date();
     expect(author).toBeInstanceOf(Author);
     expect(wrap(author).toObject()).toBeInstanceOf(Object);
+    expect(author.toObject()).toBeInstanceOf(Object);
   });
 
   test('#toObject() should ignore properties marked with hidden flag', async () => {
@@ -67,7 +68,7 @@ describe('EntityAssignerMongo', () => {
     const json = wrap(author).toObject();
     expect(json.termsAccepted).toBe(false);
     expect(json.favouriteAuthor).toBe(god.id); // self reference will be ignored even when explicitly populated
-    expect(json.books[0]).toMatchObject({
+    expect(json.books![0]).toMatchObject({
       author: { name: bible.author.name },
       publisher: { name: (await bible.publisher.load()).name },
     });

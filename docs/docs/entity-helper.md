@@ -61,6 +61,8 @@ console.log(book.meta); // { foo: 4 }
 
 ## `WrappedEntity` and `wrap()` helper
 
+TODO rewrite based on #531
+
 `IWrappedEntity` is interface that defines helper methods as well as some internal 
 properties provided by the ORM:
 
